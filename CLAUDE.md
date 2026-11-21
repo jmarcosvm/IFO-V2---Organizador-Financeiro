@@ -51,7 +51,7 @@ Contexto fixo para o Claude. Leia antes de qualquer tarefa. Se algo aqui contrad
 | `docs/07-roadmap.md` | Sprints R0–R6, backlog com checkboxes, tabela de ADRs |
 | `docs/08-licoes-da-v1.md` | Problemas do V1 a não repetir |
 
-*(Os docs 01–08 serão criados na R0, partes 2 a 4. Até lá, o PDF vale.)*
+Pontos marcados como **[proposta]** em `04`, `05` e `06` valem depois da revisão do PR; decisões abertas viram ADR no `07`.
 
 ## 4. Stack (decidida no escopo v3.3)
 | Camada | Tecnologia |
@@ -106,7 +106,7 @@ raiz/ CLAUDE.md README.md .gitignore .env.example docs/ prototipo/ Logo/
 ## 9. Ambiente (Windows 11)
 - Shell principal: PowerShell. Caminhos têm acento e espaço: **sempre entre aspas**.
 - Respeitar a quebra de linha do arquivo (CRLF) ao editar.
-- Python não está instalado; não depender dele nos scripts do projeto.
+- Python pode não estar no PATH; não depender dele nos scripts do projeto (usar Node ou shell).
 - Comandos de build e teste serão listados aqui quando o código existir (R0 parte do setup).
 
 ## 10. Fases do projeto

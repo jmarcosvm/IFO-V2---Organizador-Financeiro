@@ -22,7 +22,9 @@ Projeto acadêmico da **FATEC Cotia** (Desenvolvimento de Software Multiplatafor
 
 | Caminho | Conteúdo |
 |---|---|
-| `docs/Escopo_IFO_V2.pdf` | Documento de escopo (v3.3): requisitos RF01–RF25, stack, decisões técnicas, modelo de dados, sprints e riscos |
+| `docs/01-escopo.md` … `docs/08-licoes-da-v1.md` | **Documentação oficial** (fonte da verdade): escopo, requisitos RF01–RF25, metodologia, modelo de dados, API, arquitetura e IA, roadmap com ADRs e lições da V1 |
+| `docs/Escopo_IFO_V2.pdf` | Documento de escopo v3.3 original, mantido como referência histórica |
+| `CLAUDE.md` | Contexto fixo e combinados de trabalho para o Claude Code |
 | `Logo/` | Logotipo original do grupo (imagem). A versão vetorial (SVG) usada no protótipo está embutida em `prototipo/index.html` |
 | `prototipo/index.html` | Protótipo navegável da interface (HTML + CSS + JavaScript, sem build) |
 
@@ -87,19 +89,19 @@ O protótipo **não usa nenhuma dessas tecnologias**: é HTML/CSS/JS puro para v
 
 ## Escopo e plano de sprints
 
-O escopo completo está em `docs/Escopo_IFO_V2.pdf`. Resumo do plano:
+O escopo completo está em [`docs/01-escopo.md`](docs/01-escopo.md) e o plano detalhado, com backlog e decisões (ADRs), em [`docs/07-roadmap.md`](docs/07-roadmap.md). As sprints usam o código **R0 a R6**. Resumo:
 
 | Sprint | Entrega | Requisitos |
 |---|---|---|
-| 0 | Setup (repositório, bancos locais, estrutura MVC, Vite/React/Tailwind), protótipos das telas principais | — |
-| 1 | Cadastro, login, 2FA por e-mail, logout e edição de perfil | RF01–RF04 |
-| 2 | Categorias, CRUD de transações (inclui prevista), filtros e exportação CSV | RF05–RF10 |
-| 3 | Dashboard interativo (seletor de período e clique nos gráficos), gráficos Chart.js e painel 50/30/20 | RF12–RF14 |
-| 4 | Orçamento por percentuais com alertas, metas com aportes e simulador | RF15–RF18 |
-| 5 | Despesas recorrentes, dark mode, análise inteligente, histórico, polimento de UI e testes finais do MVP | RF11 e RF19–RF22 |
-| 6 | Agente de IA (piloto): chat, contexto agregado, limites, avaliação e decisão de manter ou remover | RF23–RF25 |
+| R0 | Documentação, setup (repositório, bancos locais, estrutura MVC, Vite/React/Tailwind) e protótipo HTML das telas principais | — |
+| R1 | Cadastro, login, 2FA por e-mail, logout e edição de perfil | RF01–RF04 |
+| R2 | Categorias, CRUD de transações (inclui prevista), filtros e exportação CSV | RF05–RF10 |
+| R3 | Dashboard interativo (seletor de período e clique nos gráficos), gráficos Chart.js e painel 50/30/20 | RF12–RF14 |
+| R4 | Orçamento por percentuais com alertas, metas com aportes e simulador | RF15–RF18 |
+| R5 | Despesas recorrentes, dark mode, análise inteligente, histórico, polimento de UI e testes finais do MVP | RF11 e RF19–RF22 |
+| R6 | Agente de IA (piloto): chat, contexto agregado, limites, avaliação e decisão de manter ou remover | RF23–RF25 |
 
-> O protótipo cobre a **interface** de quase todos os requisitos, mas **nenhum requisito está implementado de verdade** (regras de negócio no servidor, persistência, segurança). Se o PDF for atualizado, ele é a fonte da verdade; esta tabela é só um resumo.
+> O protótipo cobre a **interface** de quase todos os requisitos, mas **nenhum requisito está implementado de verdade** (regras de negócio no servidor, persistência, segurança). A fonte da verdade é a pasta `docs/` em Markdown; esta tabela é só um resumo.
 
 Fora do escopo: aplicativo mobile, Open Finance/importação de extrato, treinar modelos próprios, IA que altera dados, deploy em produção, notificações push/SMS, perfil familiar e exportação em PDF.
 
