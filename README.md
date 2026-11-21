@@ -22,7 +22,7 @@ Projeto acadêmico da **FATEC Cotia** (Desenvolvimento de Software Multiplatafor
 
 | Caminho | Conteúdo |
 |---|---|
-| `Docs/Escopo_IFO_V2.pdf` | Documento de escopo (v3.3): requisitos RF01–RF25, stack, decisões técnicas, modelo de dados, sprints e riscos |
+| `docs/Escopo_IFO_V2.pdf` | Documento de escopo (v3.3): requisitos RF01–RF25, stack, decisões técnicas, modelo de dados, sprints e riscos |
 | `Logo/` | Logotipo original do grupo (imagem). A versão vetorial (SVG) usada no protótipo está embutida em `prototipo/index.html` |
 | `prototipo/index.html` | Protótipo navegável da interface (HTML + CSS + JavaScript, sem build) |
 
@@ -87,7 +87,7 @@ O protótipo **não usa nenhuma dessas tecnologias**: é HTML/CSS/JS puro para v
 
 ## Escopo e plano de sprints
 
-O escopo completo está em `Docs/Escopo_IFO_V2.pdf`. Resumo do plano:
+O escopo completo está em `docs/Escopo_IFO_V2.pdf`. Resumo do plano:
 
 | Sprint | Entrega | Requisitos |
 |---|---|---|

@@ -38,7 +38,7 @@ Contexto fixo para o Claude. Leia antes de qualquer tarefa. Se algo aqui contrad
 - Branch principal: **`main`**.
 
 ## 3. Documentação (fonte da verdade)
-`docs/*.md` é a fonte da verdade. O `Docs/Escopo_IFO_V2.pdf` (v3.3) é referência histórica. Se o código divergir da doc, atualizar a doc **na mesma parte**. Item novo só entra na sprint com decisão registrada.
+`docs/*.md` é a fonte da verdade. O `docs/Escopo_IFO_V2.pdf` (v3.3) é referência histórica. Se o código divergir da doc, atualizar a doc **na mesma parte**. Item novo só entra na sprint com decisão registrada.
 
 | Arquivo | Papel |
 |---|---|
@@ -63,11 +63,11 @@ Contexto fixo para o Claude. Leia antes de qualquer tarefa. Se algo aqui contrad
 | Gráficos | Chart.js (react-chartjs-2) |
 | E-mail / 2FA | Resend (plano B em dev: código no log do servidor) |
 | Agente de IA (piloto) | Google AI Studio (Gemini, gratuito); reserva OpenRouter (`:free`) |
-| Design | Figma antes de codar cada tela |
+| Design | Protótipos visuais feitos direto em HTML (`prototipo/index.html`) |
 | Entrega | Ambiente local, sem deploy em nuvem |
 
 ## 5. Estrutura de pastas
-Atual: `Docs/` (PDF), `Logo/`, `prototipo/index.html`, `README.md`.
+Atual: `docs/` (PDF), `Logo/`, `prototipo/index.html`, `README.md`.
 Planejada (a confirmar na R0):
 ```
 raiz/ CLAUDE.md README.md .gitignore .env.example docs/ prototipo/ Logo/
@@ -112,7 +112,7 @@ raiz/ CLAUDE.md README.md .gitignore .env.example docs/ prototipo/ Logo/
 ## 10. Fases do projeto
 | Sprint | Meta | Requisitos | Estado |
 |---|---|---|---|
-| R0 | Setup, docs, bancos locais, MVC, Vite/React/Tailwind, Figma, chaves de teste | — | em andamento |
+| R0 | Setup, docs, bancos locais, MVC, Vite/React/Tailwind, protótipo HTML, chaves de teste | — | em andamento |
 | R1 | Cadastro, login, 2FA, logout, perfil | RF01–RF04 | pendente |
 | R2 | Categorias, CRUD de transações, filtros, CSV | RF05–RF10 | pendente |
 | R3 | Dashboard interativo e painel 50/30/20 | RF12–RF14 | pendente |
