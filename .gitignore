@@ -1,0 +1,32 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+.vite/
+coverage/
+
+# Segredos e ambiente (modelo fica em .env.example)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor e sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários e compactados
+*.zip
+*.tmp
+graphify-out/
+
+# Bancos locais
+*.sqlite
+*.db
