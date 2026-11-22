@@ -99,7 +99,10 @@ Nomes de modelos ficam só em variável de ambiente. Valores reais nunca vão ao
 | Testes | Vitest + Supertest; a rota é testada sem subir o servidor | ADR-016 |
 | Runtime e pacotes | Node 24, npm, módulos ESM; `node --env-file` e `node --watch` no lugar de `dotenv` e `nodemon`; `app.js` (monta) separado de `server.js` (liga a porta) | ADR-017 |
 | Bancos locais | MongoDB em Docker (`docker-compose.yml`); MySQL local do Windows | ADR-018 |
+| Migrations | Sequelize CLI para o MySQL | ADR-020 |
+| Frontend | JavaScript, Vite + React + Tailwind 4; em dev o Vite faz proxy de `/api` para o backend | ADR-021 |
+| Testes do frontend | Vitest + Testing Library (jsdom) | ADR-022 |
 
 ## 9. Pendências para ADR
-- Ferramenta de migrations e de seed (R0 parte 7).
+- Estratégia de seed das categorias (R2 parte 1).
 - Política de cookie em ambiente local (Secure/SameSite com front e API em portas diferentes) e expiração do JWT (R1 parte 1).

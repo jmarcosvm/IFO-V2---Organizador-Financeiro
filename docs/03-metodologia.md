@@ -54,7 +54,7 @@ Título em português, imperativo e curto; **um commit por assunto**. Título do
 | Nível | O que cobre | Ferramenta |
 |---|---|---|
 | Unitário | Regras de negócio puras (limites de orçamento, alertas, CSV, recorrência) com casos felizes e bordas (79,9% / 80% / 100% / 100,01%) | Vitest (ADR-016) |
-| Integração | Rotas da API (sem subir servidor) e, a partir da parte 7 da R0, contra MySQL e MongoDB de teste, incluindo isolamento entre usuários (404 para dado alheio) | Vitest + Supertest (ADR-016) |
+| Integração | Rotas da API (sem subir servidor) e, a partir da parte 7 da R0, contra MySQL e MongoDB de teste, incluindo isolamento entre usuários (404 para dado alheio) | Vitest + Supertest no backend (ADR-016); Vitest + Testing Library no frontend (ADR-022) |
 | Manual / IHC | Telas em 360 px, tema claro e escuro, teclado e leitor de tela | Checklist por sprint |
 
 Regra: toda regra nova leva teste. Testes que dependem da data de "hoje" recebem a data por parâmetro.

@@ -8,7 +8,7 @@ Contexto fixo para o Claude. Leia antes de qualquer tarefa. Se algo aqui contrad
 - Integra 4 disciplinas: Banco de Dados Não Relacional, Gestão Ágil, IHC e Desenvolvimento Web III.
 - Equipe (5): João Marcos Vilaça Marques, Lucas de Souza Saldanha dos Santos, Amanda Freitas de Lima, Vinicius de Amorim Farias e Jetro Pereira.
 - Quem desenvolve (ADR-019): **João Marcos** (frontend, banco e IA) e **Lucas Santos** (backend e regras de negócio). Os demais contribuem com IHC, gestão e documentação.
-- Estado atual: escopo, logo, protótipo HTML e o **esqueleto do backend** (`backend/`, R0 parte 6). **Ainda não existe banco conectado nem front React.**
+- Estado atual: escopo, logo, protótipo HTML o **esqueleto do backend** (`backend/`, R0 parte 6) e o **esqueleto do frontend** (`frontend/`, R0 parte 8). **Ainda não existe banco conectado** (R0 parte 7, pausada).
 
 ## 2. Combinados de trabalho (valem sempre)
 - **Git/GitHub:** o João pode rodar os comandos ou pedir que o Claude rode. Quando o Claude rodar, só executa o que o João mandar ("pode rodar"), passo a passo, mostrando o comando antes de `add`, `commit` e `push`. Nunca faz merge nem abre PR sem pedido.
@@ -65,14 +65,16 @@ Pontos marcados como **[proposta]** em `04`, `05` e `06` valem depois da revisã
 | Testes | Vitest + Supertest (ADR-016) |
 | Runtime | Node 24 + npm, ESM; `--env-file` e `--watch`, sem dotenv/nodemon (ADR-017) |
 | Bancos locais | MongoDB em Docker; MySQL local do Windows (ADR-018) |
-| Gráficos | Chart.js (react-chartjs-2) |
+| Migrations | Sequelize CLI para o MySQL (ADR-020) |
+| Frontend (detalhe) | JavaScript, React 19, Tailwind 4, React Router; Vitest + Testing Library (ADR-021, ADR-022) |
+| Gráficos | Chart.js (react-chartjs-2), a partir da R3 |
 | E-mail / 2FA | Resend (plano B em dev: código no log do servidor) |
 | Agente de IA (piloto) | Google AI Studio (Gemini, gratuito); reserva OpenRouter (`:free`) |
 | Design | Protótipos visuais feitos direto em HTML (`prototipo/index.html`) |
 | Entrega | Ambiente local, sem deploy em nuvem |
 
 ## 5. Estrutura de pastas
-Atual: `docs/`, `Logo/`, `prototipo/index.html`, `README.md` e `backend/` (`src/{config,routes,controllers,services,middlewares,utils}`, `tests/`).
+Atual: `docs/`, `Logo/`, `prototipo/index.html`, `README.md`, `backend/` (`src/{config,routes,controllers,services,middlewares,utils}`, `tests/`) e `frontend/` (`src/{paginas,componentes,servicos,hooks,contextos}`, `tests/`).
 Planejada (a confirmar na R0):
 ```
 raiz/ CLAUDE.md README.md .gitignore .env.example docs/ prototipo/ Logo/
@@ -118,7 +120,12 @@ raiz/ CLAUDE.md README.md .gitignore .env.example docs/ prototipo/ Logo/
   - `npm run dev`: sobe a API com reinício automático (`http://localhost:3001/api/saude`).
   - `npm start`: sobe a API sem reinício automático.
   - `npm test`: roda a suíte inteira (Vitest + Supertest); informar o número de testes.
-- Comandos do frontend serão listados aqui na R0 parte 8.
+- Comandos do frontend (rodar dentro de `frontend/`):
+  - `npm install`: instala as dependências.
+  - `npm run dev`: sobe o Vite em `http://localhost:5173` (o backend precisa estar rodando para `/api`).
+  - `npm run build`: gera o build de produção em `dist/` (ignorado pelo Git).
+  - `npm test`: roda a suíte do frontend; informar o número de testes.
+- Ao fechar uma parte, rodar a suíte de **backend e frontend** e somar os testes.
 
 ## 10. Fases do projeto
 | Sprint | Meta | Requisitos | Estado |

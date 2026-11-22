@@ -38,11 +38,11 @@ Em cada parte, o model (João Marcos) entra na `main` antes do service (Lucas Sa
 - [x] **Parte 3** — `docs/04` a `06`: modelo de dados, API, arquitetura e IA *(PR #3)*.
 - [x] **Parte 4** — `docs/07` e `08`, ADRs iniciais e README atualizado *(PR #4)*. Branch `feature/r0-roadmap-adrs`.
 - [x] **Parte 5** — Decisões da stack do backend: ADR-015 a ADR-018 (validação, testes, runtime e bancos locais) e ajustes nos docs *(PR #5)*. Só documentação. Branch `feature/r0-adr-stack-backend`.
-- [x] **Parte 6** — Esqueleto do backend: `backend/` com Express 5, camadas MVC, rota `/api/saude`, `.env.example`, middleware de erro, validação Zod e testes (Vitest + Supertest) *(este PR, 17 testes)*. Branch `feature/r0-backend-esqueleto`.
-- [ ] **Parte 7** — Bancos locais: MySQL + Sequelize e MongoDB (Docker) + Mongoose conectando; ADR de migrations/seed; instruções de subir os bancos no README. Branch `feature/r0-bancos-locais`.
-- [ ] **Parte 8** — Esqueleto do frontend: Vite + React + Tailwind, tema claro/escuro, rota inicial, cliente HTTP único. Branch `feature/r0-frontend-esqueleto`.
+- [x] **Parte 6** — Esqueleto do backend: `backend/` com Express 5, camadas MVC, rota `/api/saude`, `.env.example`, middleware de erro, validação Zod e testes (Vitest + Supertest) *(PR #6, 17 testes)*. Branch `feature/r0-backend-esqueleto`.
+- [ ] **Parte 7** — Bancos locais: MySQL + Sequelize e MongoDB (Docker) + Mongoose conectando; migrations com Sequelize CLI (ADR-020); instruções de subir os bancos no README. **Pausada** até o João Marcos ter o Docker ligado e o MySQL local criado. Branch `feature/r0-bancos-locais`.
+- [x] **Parte 8** — Esqueleto do frontend: `frontend/` com Vite + React + Tailwind, tema claro/escuro, rota inicial que consulta `/api/saude`, cliente HTTP único e testes (Vitest + Testing Library) *(este PR, 12 testes)*. Feita antes da parte 7 porque não depende dos bancos. Branch `feature/r0-frontend-esqueleto`.
 - [ ] **Parte 9** — Contas e chaves de teste: Resend, Google AI Studio e OpenRouter (feito pelo usuário fora do código); GitHub Projects com o backlog. Branch `feature/r0-contas-backlog` (só docs, se houver).
-- [ ] **ADRs pendentes de decisão**: ferramenta de migrations (parte 7) e política de cookie em ambiente local (R1 parte 1).
+- [ ] **ADR pendente de decisão**: política de cookie em ambiente local (R1 parte 1). Em desenvolvimento o proxy do Vite deixa front e API na mesma origem.
 
 ### R1 · Conta e sessão (RF01–RF04)
 - [ ] **Parte 1** — Docs: ADR de expiração do JWT/cookie e do envio do 2FA. Branch `feature/r1-adr-sessao`.
@@ -115,5 +115,8 @@ Em cada parte, o model (João Marcos) entra na `main` antes do service (Lucas Sa
 | ADR-017 | **Node 24 + npm + ESM**; `--env-file` e `--watch` no lugar de `dotenv` e `nodemon`; `app.js` separado de `server.js` | Menos dependências; `app.js` separado deixa o Supertest testar sem rede |
 | ADR-018 | **MongoDB em Docker** (`docker-compose.yml`) e **MySQL local** do Windows; `.env.example` documenta as duas URLs | MongoDB não está instalado; ambiente repetível sem conflito na porta 3306 |
 | ADR-019 | **Duas pessoas no código**: João Marcos (frontend, banco, IA) e Lucas Santos (backend e regras); contrato em `docs/05` e `docs/04`; model antes do service; mudança de contrato entra primeiro nos docs | Só duas pessoas desenvolvem; fronteira por camada evita conflito de arquivos |
+| ADR-020 | Migrations do MySQL com **Sequelize CLI** (`sequelize-cli`); `sync` automático não é usado | Par oficial do Sequelize e da disciplina Desenvolvimento Web III; esquema versionado evita o `ALTER` manual da V1 |
+| ADR-021 | Frontend em **JavaScript** (não TypeScript), **Vite + React 19 + Tailwind 4**; modo escuro por classe `dark` (`@custom-variant`); cores do protótipo como variáveis CSS; em dev o Vite repassa `/api` ao backend (proxy) | Mesma linguagem do backend e do protótipo; menos configuração; proxy evita CORS e cookie entre portas em desenvolvimento |
+| ADR-022 | Testes do frontend com **Vitest + Testing Library** (jsdom); o cliente HTTP único (`servicos/api.js`) é testado à parte; testes do front entram no "número de testes" | Mesmo Vitest do backend; testa o que o usuário vê |
 
-**Decisões ainda abertas** (viram ADR-020 em diante): ferramenta de migrations e seed (R0 parte 7), política de cookie em ambiente local e expiração do JWT (R1 parte 1), política de exclusão de conta (R1).
+**Decisões ainda abertas** (viram ADR-023 em diante): política de cookie em ambiente local e expiração do JWT (R1 parte 1), política de exclusão de conta (R1), estratégia de seed (R2 parte 1).
