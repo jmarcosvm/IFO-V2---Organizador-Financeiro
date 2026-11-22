@@ -7,7 +7,8 @@ Contexto fixo para o Claude. Leia antes de qualquer tarefa. Se algo aqui contrad
 - Projeto acadêmico da FATEC Cotia (DSM, 2º semestre de 2026). Evolução do IFO V1 (Java + Spring Boot + PostgreSQL).
 - Integra 4 disciplinas: Banco de Dados Não Relacional, Gestão Ágil, IHC e Desenvolvimento Web III.
 - Equipe (5): João Marcos Vilaça Marques, Lucas de Souza Saldanha dos Santos, Amanda Freitas de Lima, Vinicius de Amorim Farias e Jetro Pereira.
-- Estado atual: só escopo, logo e protótipo HTML. **Ainda não existe back-end, banco nem front React.**
+- Quem desenvolve (ADR-019): **João Marcos** (frontend, banco e IA) e **Lucas Santos** (backend e regras de negócio). Os demais contribuem com IHC, gestão e documentação.
+- Estado atual: escopo, logo, protótipo HTML e o **esqueleto do backend** (`backend/`, R0 parte 6). **Ainda não existe banco conectado nem front React.**
 
 ## 2. Combinados de trabalho (valem sempre)
 - **Git/GitHub:** o João pode rodar os comandos ou pedir que o Claude rode. Quando o Claude rodar, só executa o que o João mandar ("pode rodar"), passo a passo, mostrando o comando antes de `add`, `commit` e `push`. Nunca faz merge nem abre PR sem pedido.
@@ -71,7 +72,7 @@ Pontos marcados como **[proposta]** em `04`, `05` e `06` valem depois da revisã
 | Entrega | Ambiente local, sem deploy em nuvem |
 
 ## 5. Estrutura de pastas
-Atual: `docs/` (PDF), `Logo/`, `prototipo/index.html`, `README.md`.
+Atual: `docs/`, `Logo/`, `prototipo/index.html`, `README.md` e `backend/` (`src/{config,routes,controllers,services,middlewares,utils}`, `tests/`).
 Planejada (a confirmar na R0):
 ```
 raiz/ CLAUDE.md README.md .gitignore .env.example docs/ prototipo/ Logo/
@@ -111,7 +112,13 @@ raiz/ CLAUDE.md README.md .gitignore .env.example docs/ prototipo/ Logo/
 - Shell principal: PowerShell. Caminhos têm acento e espaço: **sempre entre aspas**.
 - Respeitar a quebra de linha do arquivo (CRLF) ao editar.
 - Python pode não estar no PATH; não depender dele nos scripts do projeto (usar Node ou shell).
-- Comandos de build e teste serão listados aqui quando o código existir (R0 parte do setup).
+- Comandos do backend (rodar dentro de `backend/`, no PowerShell):
+  - `npm install`: instala as dependências.
+  - `Copy-Item .env.example .env`: cria o `.env` local (fica fora do Git).
+  - `npm run dev`: sobe a API com reinício automático (`http://localhost:3001/api/saude`).
+  - `npm start`: sobe a API sem reinício automático.
+  - `npm test`: roda a suíte inteira (Vitest + Supertest); informar o número de testes.
+- Comandos do frontend serão listados aqui na R0 parte 8.
 
 ## 10. Fases do projeto
 | Sprint | Meta | Requisitos | Estado |

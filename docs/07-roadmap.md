@@ -14,6 +14,20 @@
 | R5 | Recorrências, dark mode, análise, histórico, polimento e testes finais do MVP | RF11, RF19–RF22 | pendente |
 | R6 | Agente de IA (piloto) e decisão de manter ou remover | RF23–RF25 | pendente |
 
+**Divisão de papéis no código (ADR-019):** **João Marcos** cuida do frontend, do banco (models, migrations, seed, Docker) e da IA; **Lucas Santos** cuida do backend e das regras de negócio. O contrato da API (`docs/05`) e o modelo de dados (`docs/04`) são a fronteira entre os dois.
+
+| Sprint | João Marcos | Lucas Santos |
+|---|---|---|
+| R0 | esqueleto do backend, bancos locais, frontend, contas | revisão |
+| R1 | tabelas MySQL, telas de acesso | cadastro, login, 2FA, sessão, perfil |
+| R2 | coleções Mongo, seed, telas de transações | categorias, CRUD, filtros, CSV |
+| R3 | gráficos e painel 50/30/20 | endpoint do dashboard |
+| R4 | modelos de orçamento e metas, simulador | alertas e regras de orçamento |
+| R5 | dark mode, polimento, modelos | recorrências, análise, histórico |
+| R6 | agente de IA inteiro (`aiProvider`, chat, avaliação) | revisão e apoio |
+
+Em cada parte, o model (João Marcos) entra na `main` antes do service (Lucas Santos); a tela é feita em paralelo, contra o contrato.
+
 **Ordem de corte** (se faltar tempo): RF11 (recorrências) → RF22 (histórico) → RF21 (sugestão e projeção) → agente de IA inteiro (R6). O MVP fecha ao fim da R5.
 
 ## 2. Backlog detalhado
@@ -23,8 +37,8 @@
 - [x] **Parte 2** — `docs/01` a `03`: escopo, requisitos, metodologia; pasta `Docs/` → `docs/` *(PR #2)*.
 - [x] **Parte 3** — `docs/04` a `06`: modelo de dados, API, arquitetura e IA *(PR #3)*.
 - [x] **Parte 4** — `docs/07` e `08`, ADRs iniciais e README atualizado *(PR #4)*. Branch `feature/r0-roadmap-adrs`.
-- [x] **Parte 5** — Decisões da stack do backend: ADR-015 a ADR-018 (validação, testes, runtime e bancos locais) e ajustes nos docs *(este PR)*. Só documentação. Branch `feature/r0-adr-stack-backend`.
-- [ ] **Parte 6** — Esqueleto do backend: `backend/` com Express, camadas MVC, rota `/api/saude`, `.env.example`, middleware de erro, validação Zod e testes (Vitest + Supertest). Branch `feature/r0-backend-esqueleto`.
+- [x] **Parte 5** — Decisões da stack do backend: ADR-015 a ADR-018 (validação, testes, runtime e bancos locais) e ajustes nos docs *(PR #5)*. Só documentação. Branch `feature/r0-adr-stack-backend`.
+- [x] **Parte 6** — Esqueleto do backend: `backend/` com Express 5, camadas MVC, rota `/api/saude`, `.env.example`, middleware de erro, validação Zod e testes (Vitest + Supertest) *(este PR, 17 testes)*. Branch `feature/r0-backend-esqueleto`.
 - [ ] **Parte 7** — Bancos locais: MySQL + Sequelize e MongoDB (Docker) + Mongoose conectando; ADR de migrations/seed; instruções de subir os bancos no README. Branch `feature/r0-bancos-locais`.
 - [ ] **Parte 8** — Esqueleto do frontend: Vite + React + Tailwind, tema claro/escuro, rota inicial, cliente HTTP único. Branch `feature/r0-frontend-esqueleto`.
 - [ ] **Parte 9** — Contas e chaves de teste: Resend, Google AI Studio e OpenRouter (feito pelo usuário fora do código); GitHub Projects com o backlog. Branch `feature/r0-contas-backlog` (só docs, se houver).
@@ -100,5 +114,6 @@
 | ADR-016 | **Vitest + Supertest**; rota testada sem subir servidor; todo teste novo entra no "número de testes" | ESM nativo, saída clara, poucas dependências |
 | ADR-017 | **Node 24 + npm + ESM**; `--env-file` e `--watch` no lugar de `dotenv` e `nodemon`; `app.js` separado de `server.js` | Menos dependências; `app.js` separado deixa o Supertest testar sem rede |
 | ADR-018 | **MongoDB em Docker** (`docker-compose.yml`) e **MySQL local** do Windows; `.env.example` documenta as duas URLs | MongoDB não está instalado; ambiente repetível sem conflito na porta 3306 |
+| ADR-019 | **Duas pessoas no código**: João Marcos (frontend, banco, IA) e Lucas Santos (backend e regras); contrato em `docs/05` e `docs/04`; model antes do service; mudança de contrato entra primeiro nos docs | Só duas pessoas desenvolvem; fronteira por camada evita conflito de arquivos |
 
-**Decisões ainda abertas** (viram ADR-019 em diante): ferramenta de migrations e seed (R0 parte 7), política de cookie em ambiente local e expiração do JWT (R1 parte 1), política de exclusão de conta (R1).
+**Decisões ainda abertas** (viram ADR-020 em diante): ferramenta de migrations e seed (R0 parte 7), política de cookie em ambiente local e expiração do JWT (R1 parte 1), política de exclusão de conta (R1).

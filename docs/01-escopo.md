@@ -23,6 +23,8 @@ O projeto é acadêmico (FATEC Cotia, curso DSM, 2º semestre de 2026) e integra
 ## 2. Equipe
 João Marcos Vilaça Marques, Lucas de Souza Saldanha dos Santos, Amanda Freitas de Lima, Vinicius de Amorim Farias e Jetro Pereira.
 
+> **Quem desenvolve:** o código é feito por duas pessoas: **João Marcos** (frontend, banco e IA) e **Lucas Santos** (backend e regras de negócio), conforme o ADR-019 do `07-roadmap.md`. Os demais integrantes contribuem com IHC, gestão e documentação.
+
 > **Divergência registrada:** o PDF v3.3 lista 4 nomes (sem Jetro Pereira); o README lista 5. Vale o README (ver ADR-001 no `07-roadmap.md`).
 
 ## 3. Dentro do escopo
