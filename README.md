@@ -4,7 +4,7 @@ Organizador financeiro pessoal para o brasileiro médio: registra receitas e des
 
 Projeto acadêmico da **FATEC Cotia** (Desenvolvimento de Software Multiplataforma, 2º semestre de 2026). O IFO V2 é a evolução do IFO V1 (Java + Spring Boot + PostgreSQL), desenvolvido no semestre anterior.
 
-> **Estado atual, sem rodeios:** este repositório contém hoje **o escopo, o logotipo e um protótipo de interface** (um único arquivo HTML com dados fictícios). **Não existe back-end, banco de dados nem o front-end em React ainda.** Nada do que se faz no protótipo é salvo: ao recarregar a página, os dados voltam ao início.
+> **Estado atual, sem rodeios:** este repositório contém hoje **o escopo, o logotipo, um protótipo de interface** (um único arquivo HTML com dados fictícios) e o **esqueleto do back-end** (servidor Express com a rota `/api/saude`, sem regra de negócio). **Não existe banco de dados conectado nem o front-end em React ainda.** Nada do que se faz no protótipo é salvo: ao recarregar a página, os dados voltam ao início.
 
 ## Sumário
 
@@ -27,6 +27,7 @@ Projeto acadêmico da **FATEC Cotia** (Desenvolvimento de Software Multiplatafor
 | `CLAUDE.md` | Contexto fixo e combinados de trabalho para o Claude Code |
 | `Logo/` | Logotipo original do grupo (imagem). A versão vetorial (SVG) usada no protótipo está embutida em `prototipo/index.html` |
 | `prototipo/index.html` | Protótipo navegável da interface (HTML + CSS + JavaScript, sem build) |
+| `backend/` | API Node.js + Express (esqueleto da R0 parte 6): rota de saúde, erro padrão, validação Zod e testes |
 
 ## Como rodar o protótipo
 
@@ -43,6 +44,18 @@ start prototipo\index.html
 - **Código de verificação (2FA):** `123456`. Ele aparece escrito na própria tela porque nenhum e-mail é enviado.
 - **Data "hoje" no protótipo:** fixa em 11/11/2026, para os dados de exemplo fazerem sentido.
 - Navegadores testados: Chromium (Playwright). Não foi testado em Safari nem em Firefox.
+
+## Como rodar o backend
+
+Precisa de Node 24 ou mais novo. No PowerShell, dentro da pasta `backend`:
+
+```powershell
+npm install
+Copy-Item .env.example .env
+npm run dev
+```
+
+Depois abra `http://localhost:3001/api/saude`: deve responder `{"status":"ok"}`. Para rodar os testes: `npm test`. Os bancos de dados ainda não são usados (entram na R0 parte 7).
 
 ## O que o protótipo faz (e o que é de mentira)
 
