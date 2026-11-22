@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+
+/* Modo escuro pela classe "dark" no <html> (ADR-006 e docs/06 §5). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Cores do protótipo (prototipo/index.html). Um valor por tema; as classes do Tailwind
+   (bg-paper, text-ink, ...) apontam para estas variáveis e trocam sozinhas no escuro. */
+:root {
+  --paper: #f1f5f6;
+  --surface: #ffffff;
+  --surface-2: #f6f9f9;
+  --ink: #0f2b33;
+  --ink-2: #46606a;
+  --line: #d7e0e4;
+  --brand: #0f5e63;
+  --brand-ink: #ffffff;
+  --brand-soft: #dcefef;
+  --ok: #16794a;
+  --erro: #b3261e;
+}
+
+.dark {
+  --paper: #0a1a1f;
+  --surface: #112a31;
+  --surface-2: #0e2328;
+  --ink: #e7f1f3;
+  --ink-2: #9fb8bf;
+  --line: #25444d;
+  --brand: #4cc2b3;
+  --brand-ink: #04211e;
+  --brand-soft: #133a3b;
+  --ok: #5fd39a;
+  --erro: #ff8a80;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-ok: var(--ok);
+  --color-erro: var(--erro);
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+}
