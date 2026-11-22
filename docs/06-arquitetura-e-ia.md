@@ -33,7 +33,7 @@ Pastas auxiliares [proposta]: `middlewares/` (auth, validação, erro), `jobs/` 
 - **Isolamento:** o `usuarioId` vem do token; toda consulta filtra por ele; recurso alheio devolve 404.
 - **Segredos:** só em variáveis de ambiente; `.env` fora do Git, modelo em `.env.example`.
 - **CSV:** neutraliza injeção de fórmula e só exporta dados do usuário logado.
-- **Entrada:** toda rota valida corpo, query e params (biblioteca de validação a definir em ADR).
+- **Entrada:** toda rota valida corpo, query e params com **Zod** (ADR-015).
 
 ## 4. Jobs agendados [PDF]
 - **Recorrências:** job diário (node-cron) lê `recorrencias` ativas e gera a transação da competência `AAAA-MM` quando o dia do mês chega. É **idempotente**: `ultimaCompetencia` e o índice único em `transacoes` impedem duplicar mesmo que o job rode duas vezes. Ao subir, o servidor também recupera competências perdidas enquanto estava desligado.
@@ -92,7 +92,14 @@ Definidos em `01-escopo.md` §6 (8/10 corretas, mediana ≤ 5 s, nenhuma falha d
 
 Nomes de modelos ficam só em variável de ambiente. Valores reais nunca vão ao Git.
 
-## 8. Pendências para ADR
-- Biblioteca de validação (ex.: zod, joi ou express-validator) e de testes.
-- Ferramenta de migrations e de seed.
-- Política de cookie em ambiente local (Secure/SameSite com front e API em portas diferentes).
+## 8. Ferramentas do backend (decididas na R0 parte 5)
+| Assunto | Decisão | ADR |
+|---|---|---|
+| Validação | Zod: corpo, query, params e variáveis de ambiente | ADR-015 |
+| Testes | Vitest + Supertest; a rota é testada sem subir o servidor | ADR-016 |
+| Runtime e pacotes | Node 24, npm, módulos ESM; `node --env-file` e `node --watch` no lugar de `dotenv` e `nodemon`; `app.js` (monta) separado de `server.js` (liga a porta) | ADR-017 |
+| Bancos locais | MongoDB em Docker (`docker-compose.yml`); MySQL local do Windows | ADR-018 |
+
+## 9. Pendências para ADR
+- Ferramenta de migrations e de seed (R0 parte 7).
+- Política de cookie em ambiente local (Secure/SameSite com front e API em portas diferentes) e expiração do JWT (R1 parte 1).
