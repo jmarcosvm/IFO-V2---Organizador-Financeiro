@@ -4,7 +4,7 @@ Organizador financeiro pessoal para o brasileiro médio: registra receitas e des
 
 Projeto acadêmico da **FATEC Cotia** (Desenvolvimento de Software Multiplataforma, 2º semestre de 2026). O IFO V2 é a evolução do IFO V1 (Java + Spring Boot + PostgreSQL), desenvolvido no semestre anterior.
 
-> **Estado atual, sem rodeios:** este repositório contém hoje **o escopo, o logotipo, um protótipo de interface** (um único arquivo HTML com dados fictícios) e o **esqueleto do back-end** (servidor Express com a rota `/api/saude`, sem regra de negócio). **Não existe banco de dados conectado nem o front-end em React ainda.** Nada do que se faz no protótipo é salvo: ao recarregar a página, os dados voltam ao início.
+> **Estado atual, sem rodeios:** este repositório contém hoje **o escopo, o logotipo, um protótipo de interface** (um único arquivo HTML com dados fictícios) o **esqueleto do back-end** (servidor Express com a rota `/api/saude`, sem regra de negócio) e o **esqueleto do front-end** (React + Tailwind com uma página inicial e tema claro/escuro). **Não existe banco de dados conectado ainda e nenhuma tela real do produto.** Nada do que se faz no protótipo é salvo: ao recarregar a página, os dados voltam ao início.
 
 ## Sumário
 
@@ -28,6 +28,7 @@ Projeto acadêmico da **FATEC Cotia** (Desenvolvimento de Software Multiplatafor
 | `Logo/` | Logotipo original do grupo (imagem). A versão vetorial (SVG) usada no protótipo está embutida em `prototipo/index.html` |
 | `prototipo/index.html` | Protótipo navegável da interface (HTML + CSS + JavaScript, sem build) |
 | `backend/` | API Node.js + Express (esqueleto da R0 parte 6): rota de saúde, erro padrão, validação Zod e testes |
+| `frontend/` | App React (Vite + Tailwind) da R0 parte 8: página inicial, tema claro/escuro, cliente HTTP único e testes |
 
 ## Como rodar o protótipo
 
@@ -56,6 +57,17 @@ npm run dev
 ```
 
 Depois abra `http://localhost:3001/api/saude`: deve responder `{"status":"ok"}`. Para rodar os testes: `npm test`. Os bancos de dados ainda não são usados (entram na R0 parte 7).
+
+## Como rodar o frontend
+
+Com o backend rodando (seção acima), abra **outro** PowerShell, dentro da pasta `frontend`:
+
+```powershell
+npm install
+npm run dev
+```
+
+Abra `http://localhost:5173`: a página inicial mostra "API no ar." quando o backend responde. Em desenvolvimento o Vite repassa `/api` para a porta 3001. Para testar: `npm test`; para gerar o build: `npm run build`.
 
 ## O que o protótipo faz (e o que é de mentira)
 

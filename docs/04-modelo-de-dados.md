@@ -84,6 +84,6 @@ Registro das análises por regras geradas para o usuário (período comparado e 
 - Exclusão de conta: apaga `codigos_2fa` por cascata e os documentos do Mongo por rotina da aplicação [proposta, detalhar na R1].
 
 ## 5. Pendências para decidir em ADR
-- Ferramenta de migrations do MySQL (Sequelize CLI versus scripts próprios): decidir na R0 parte 7. O MongoDB roda em Docker e o MySQL é o local do Windows (ADR-018).
+- Migrations do MySQL: **Sequelize CLI** (ADR-020), configurado na R0 parte 7. O MongoDB roda em Docker e o MySQL é o local do Windows (ADR-018).
 - Estratégia de seed das categorias padrão (script idempotente).
 - Política de exclusão de conta (existe no MVP ou fica fora?).
