@@ -60,6 +60,10 @@ Pontos marcados como **[proposta]** em `04`, `05` e `06` valem depois da revisã
 | Relacional | MySQL + Sequelize (usuários e códigos 2FA) |
 | NoSQL | MongoDB + Mongoose (transações, categorias, orçamentos, metas, etc.) |
 | Frontend | React (Vite) + Tailwind CSS, sem biblioteca de componentes |
+| Validação | Zod: corpo, query, params e ambiente (ADR-015) |
+| Testes | Vitest + Supertest (ADR-016) |
+| Runtime | Node 24 + npm, ESM; `--env-file` e `--watch`, sem dotenv/nodemon (ADR-017) |
+| Bancos locais | MongoDB em Docker; MySQL local do Windows (ADR-018) |
 | Gráficos | Chart.js (react-chartjs-2) |
 | E-mail / 2FA | Resend (plano B em dev: código no log do servidor) |
 | Agente de IA (piloto) | Google AI Studio (Gemini, gratuito); reserva OpenRouter (`:free`) |

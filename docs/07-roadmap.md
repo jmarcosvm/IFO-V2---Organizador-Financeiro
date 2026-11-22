@@ -22,12 +22,13 @@
 - [x] **Parte 1** — `CLAUDE.md` e `.gitignore` *(PR #1)*. Como: combinados de trabalho, stack, regras, fases.
 - [x] **Parte 2** — `docs/01` a `03`: escopo, requisitos, metodologia; pasta `Docs/` → `docs/` *(PR #2)*.
 - [x] **Parte 3** — `docs/04` a `06`: modelo de dados, API, arquitetura e IA *(PR #3)*.
-- [x] **Parte 4** — `docs/07` e `08`, ADRs iniciais e README atualizado *(este PR)*. Branch `feature/r0-roadmap-adrs`.
-- [ ] **Parte 5** — Esqueleto do backend: `backend/` com Express, camadas MVC, rota `/api/saude`, `.env.example`, middleware de erro. Como: `npm init`, Express, estrutura de pastas, teste da rota de saúde. Branch `feature/r0-backend-esqueleto`.
-- [ ] **Parte 6** — Bancos locais: MySQL + Sequelize e MongoDB + Mongoose conectando; ADR de migrations/seed; instruções de subir os bancos no README. Branch `feature/r0-bancos-locais`.
-- [ ] **Parte 7** — Esqueleto do frontend: Vite + React + Tailwind, tema claro/escuro, rota inicial, cliente HTTP único. Branch `feature/r0-frontend-esqueleto`.
-- [ ] **Parte 8** — Contas e chaves de teste: Resend, Google AI Studio e OpenRouter (feito pelo usuário fora do código); GitHub Projects com o backlog. Branch `feature/r0-contas-backlog` (só docs, se houver).
-- [ ] **ADRs pendentes de decisão** (fechar nas partes 5 e 6): biblioteca de validação, framework de testes, ferramenta de migrations, política de cookie em ambiente local.
+- [x] **Parte 4** — `docs/07` e `08`, ADRs iniciais e README atualizado *(PR #4)*. Branch `feature/r0-roadmap-adrs`.
+- [x] **Parte 5** — Decisões da stack do backend: ADR-015 a ADR-018 (validação, testes, runtime e bancos locais) e ajustes nos docs *(este PR)*. Só documentação. Branch `feature/r0-adr-stack-backend`.
+- [ ] **Parte 6** — Esqueleto do backend: `backend/` com Express, camadas MVC, rota `/api/saude`, `.env.example`, middleware de erro, validação Zod e testes (Vitest + Supertest). Branch `feature/r0-backend-esqueleto`.
+- [ ] **Parte 7** — Bancos locais: MySQL + Sequelize e MongoDB (Docker) + Mongoose conectando; ADR de migrations/seed; instruções de subir os bancos no README. Branch `feature/r0-bancos-locais`.
+- [ ] **Parte 8** — Esqueleto do frontend: Vite + React + Tailwind, tema claro/escuro, rota inicial, cliente HTTP único. Branch `feature/r0-frontend-esqueleto`.
+- [ ] **Parte 9** — Contas e chaves de teste: Resend, Google AI Studio e OpenRouter (feito pelo usuário fora do código); GitHub Projects com o backlog. Branch `feature/r0-contas-backlog` (só docs, se houver).
+- [ ] **ADRs pendentes de decisão**: ferramenta de migrations (parte 7) e política de cookie em ambiente local (R1 parte 1).
 
 ### R1 · Conta e sessão (RF01–RF04)
 - [ ] **Parte 1** — Docs: ADR de expiração do JWT/cookie e do envio do 2FA. Branch `feature/r1-adr-sessao`.
@@ -95,5 +96,9 @@
 | ADR-012 | **`docs/*.md` é a fonte da verdade**; o PDF v3.3 fica como referência histórica; pasta renomeada `Docs/` → `docs/` | Markdown é versionável e revisável por PR |
 | ADR-013 | Sprints com código **R0–R6** e partes numeradas; uma branch e um PR por parte; branch principal `main` | Rastreabilidade e revisão em PRs pequenos |
 | ADR-014 | Exportação **CSV** com `;`, vírgula decimal, datas dd/MM/aaaa, UTF-8 com BOM e anti-injeção de fórmula | Abre corretamente no Excel brasileiro e é seguro |
+| ADR-015 | **Zod** valida corpo, query, params e variáveis de ambiente | Um esquema só serve às duas tarefas; mensagens em português |
+| ADR-016 | **Vitest + Supertest**; rota testada sem subir servidor; todo teste novo entra no "número de testes" | ESM nativo, saída clara, poucas dependências |
+| ADR-017 | **Node 24 + npm + ESM**; `--env-file` e `--watch` no lugar de `dotenv` e `nodemon`; `app.js` separado de `server.js` | Menos dependências; `app.js` separado deixa o Supertest testar sem rede |
+| ADR-018 | **MongoDB em Docker** (`docker-compose.yml`) e **MySQL local** do Windows; `.env.example` documenta as duas URLs | MongoDB não está instalado; ambiente repetível sem conflito na porta 3306 |
 
-**Decisões ainda abertas** (viram ADR-015 em diante): biblioteca de validação, framework de testes, ferramenta de migrations e seed, política de cookie em ambiente local, expiração do JWT, política de exclusão de conta.
+**Decisões ainda abertas** (viram ADR-019 em diante): ferramenta de migrations e seed (R0 parte 7), política de cookie em ambiente local e expiração do JWT (R1 parte 1), política de exclusão de conta (R1).
